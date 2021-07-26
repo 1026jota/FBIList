@@ -1,10 +1,10 @@
 <?php
 
-namespace Jota\EUTerroristList\Facades;
+namespace Jota\FbiList\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class EUTerroristListFacade extends Facade
+class FBIListFacade extends Facade
 {
     /**
      * Get the registered name of the component.
@@ -13,6 +13,6 @@ class EUTerroristListFacade extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'EUTerroristList';
+        return 'FBIList';
     }
 }

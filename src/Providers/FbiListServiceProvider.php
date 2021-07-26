@@ -14,7 +14,7 @@ class FbiListServiceProvider extends ServiceProvider
      */
     public function register() : void
     {
-        $this->app->bind('FbiList', function () {
+        $this->app->bind('FBIList', function () {
             return new FbiList();
         });
     }

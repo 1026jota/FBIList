@@ -1,7 +1,8 @@
 <?php
 namespace Jota\FbiList\Classes;
+use Jota\FbiList\Exceptions\ConnectionException;
 use Goutte\Client;
-
+use Exception;
 class FbiList{
 
     /**
@@ -71,10 +72,14 @@ class FbiList{
      */
     private function getTotal(): int
     {
-        $crawler = $this->client->request('GET', config('fbilist.url'));
-        $html = $crawler->filter('[class="right"]');
-        $total = explode(" ", $html->text());
-        return (int)$total[1];
+        try {
+            $crawler = $this->client->request('GET', config('fbilist.url'));
+            $html = $crawler->filter('[class="right"]');
+            $total = explode(" ", $html->text());
+            return (int)$total[1];
+        } catch (Exception $e) {
+            throw new ConnectionException('Error al intentar ingresar a la url', $e);
+        }
     }
 
     /**
